@@ -56,17 +56,17 @@ export default function CameraCard({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <h2 className="text-xl font-bold text-gray-800">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">
             {camera.brand} {camera.model}
           </h2>
-          <p className="text-sm text-gray-600">{status.className}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{status.className}</p>
         </div>
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-gray-500 hover:text-gray-700 text-2xl"
+          className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl"
         >
           {expanded ? '▼' : '▶'}
         </button>
@@ -74,35 +74,35 @@ export default function CameraCard({
 
       <div className="space-y-3 mb-4">
         <div className="grid grid-cols-2 gap-3 text-sm">
-          <div className="bg-blue-50 p-2 rounded">
-            <span className="text-gray-600">ISO:</span>
-            <span className="font-semibold ml-1">{camera.iso}</span>
+          <div className="bg-blue-50 dark:bg-gray-700 p-2 rounded">
+            <span className="text-gray-600 dark:text-gray-400">ISO:</span>
+            <span className="font-semibold ml-1 dark:text-gray-100">{camera.iso}</span>
           </div>
-          <div className="bg-blue-50 p-2 rounded">
-            <span className="text-gray-600">Aperture:</span>
-            <span className="font-semibold ml-1">f/{camera.aperture}</span>
+          <div className="bg-blue-50 dark:bg-gray-700 p-2 rounded">
+            <span className="text-gray-600 dark:text-gray-400">Aperture:</span>
+            <span className="font-semibold ml-1 dark:text-gray-100">f/{camera.aperture}</span>
           </div>
-          <div className="bg-blue-50 p-2 rounded">
-            <span className="text-gray-600">Shutter:</span>
-            <span className="font-semibold ml-1">{status.shutterSpeed}</span>
+          <div className="bg-blue-50 dark:bg-gray-700 p-2 rounded">
+            <span className="text-gray-600 dark:text-gray-400">Shutter:</span>
+            <span className="font-semibold ml-1 dark:text-gray-100">{status.shutterSpeed}</span>
           </div>
-          <div className="bg-blue-50 p-2 rounded">
-            <span className="text-gray-600">Focal:</span>
-            <span className="font-semibold ml-1">{camera.focalLength}mm</span>
+          <div className="bg-blue-50 dark:bg-gray-700 p-2 rounded">
+            <span className="text-gray-600 dark:text-gray-400">Focal:</span>
+            <span className="font-semibold ml-1 dark:text-gray-100">{camera.focalLength}mm</span>
           </div>
         </div>
 
         {camera.filmFormat ? (
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="text-gray-600">Film:</span>
-              <span className="font-semibold">{camera.filmRemaining}/{camera.filmCapacity}</span>
+              <span className="text-gray-600 dark:text-gray-400">Film:</span>
+              <span className="font-semibold dark:text-gray-100">{camera.filmRemaining}/{camera.filmCapacity}</span>
             </div>
             <div className="flex gap-1">
               {[...Array(camera.filmCapacity)].map((_, i) => {
                 const filled = i < camera.filmRemaining;
                 return (
-                  <div key={i} className={`w-3 h-5 rounded-sm ${filled ? 'bg-purple-600' : 'bg-gray-200'}`} />
+                  <div key={i} className={`w-3 h-5 rounded-sm ${filled ? 'bg-purple-600' : 'bg-gray-200 dark:bg-gray-600'}`} />
                 );
               })}
             </div>
@@ -110,28 +110,28 @@ export default function CameraCard({
         ) : camera.battery !== undefined && (
           <div>
             <div className="flex justify-between text-sm mb-1">
-              <span className="text-gray-600">Battery:</span>
-              <span className="font-semibold">{camera.battery}%</span>
+              <span className="text-gray-600 dark:text-gray-400">Battery:</span>
+              <span className="font-semibold dark:text-gray-100">{camera.battery}%</span>
             </div>
             <BatteryBar value={camera.battery} />
           </div>
         )}
 
-        <div className="text-sm text-gray-700">
-          <span className="text-gray-600">Shutter Count:</span>
-          <span className="font-semibold ml-1">{camera.shutterCount}</span>
+        <div className="text-sm text-gray-700 dark:text-gray-300">
+          <span className="text-gray-600 dark:text-gray-400">Shutter Count:</span>
+          <span className="font-semibold ml-1 dark:text-gray-100">{camera.shutterCount}</span>
         </div>
       </div>
 
       {expanded && (
-        <div className="border-t pt-4 space-y-3">
+        <div className="border-t dark:border-gray-600 pt-4 space-y-3">
           {/* Digital Camera specific */}
           {camera.resolution !== undefined && (
-            <div className="bg-green-50 p-3 rounded">
-              <p className="text-sm text-gray-700">
+            <div className="bg-green-50 dark:bg-gray-700 p-3 rounded">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
                 <span className="font-semibold">Resolution:</span> {camera.resolution} MP
               </p>
-              <p className="text-sm text-gray-700 mt-1">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
                 <span className="font-semibold">Zoom:</span> {camera.zoomRatio}x
               </p>
               <div className="mt-2 flex gap-2">
@@ -140,14 +140,14 @@ export default function CameraCard({
                   className={`px-3 py-1 rounded text-sm font-medium ${
                     camera.burstMode
                       ? 'bg-orange-500 text-white'
-                      : 'bg-gray-300 text-gray-700'
+                      : 'bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200'
                   }`}
                 >
                   Burst: {camera.burstMode ? 'ON' : 'OFF'}
                 </button>
                 <select
                   onChange={(e) => handleZoom(parseInt(e.target.value))}
-                  className="px-2 py-1 rounded text-sm border border-gray-300"
+                  className="px-2 py-1 rounded text-sm border border-gray-300 dark:border-gray-500 dark:bg-gray-600 dark:text-gray-200"
                 >
                   <option>Zoom...</option>
                   {[...Array(camera.zoomRatio)].map((_, i) => (
@@ -162,11 +162,11 @@ export default function CameraCard({
 
           {/* Film Camera specific */}
           {camera.filmRemaining !== undefined && camera.filmFormat && (
-            <div className="bg-purple-50 p-3 rounded">
-              <p className="text-sm text-gray-700">
+            <div className="bg-purple-50 dark:bg-gray-700 p-3 rounded">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
                 <span className="font-semibold">Format:</span> {camera.filmFormat}
               </p>
-              <p className="text-sm text-gray-700 mt-1">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
                 <span className="font-semibold">Film:</span> {camera.filmRemaining}/{camera.filmCapacity} shots
               </p>
               <button
@@ -180,11 +180,11 @@ export default function CameraCard({
 
           {/* Instant Camera specific */}
           {camera.filmRemaining !== undefined && !camera.filmFormat && (
-            <div className="bg-pink-50 p-3 rounded">
-              <p className="text-sm text-gray-700">
+            <div className="bg-pink-50 dark:bg-gray-700 p-3 rounded">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
                 <span className="font-semibold">Film Pack:</span> {camera.filmRemaining}/{camera.filmPack} sheets
               </p>
-              <p className="text-sm text-gray-700 mt-1">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
                 <span className="font-semibold">Status:</span>{' '}
                 <span className={camera.developing ? 'text-orange-600 font-semibold' : 'text-green-600'}>
                   {camera.developing ? 'Developing...' : 'Ready'}

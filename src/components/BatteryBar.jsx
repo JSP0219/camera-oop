@@ -7,7 +7,7 @@ export default function BatteryBar({ value }) {
   };
 
   return (
-    <div className="w-full bg-gray-200 rounded-full h-6 overflow-hidden shadow-sm">
+    <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-6 overflow-hidden shadow-sm">
       <div
         className={`${getColor()} h-6 rounded-full text-xs font-bold text-white text-center flex items-center justify-center transition-all duration-300`}
         style={{ width: `${value}%` }}
