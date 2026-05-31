@@ -7,6 +7,7 @@ export default class FilmCamera extends Camera {
   _filmFormat;
   _filmCapacity;
   _filmRemaining;
+  //1
 
   constructor(
     brand,

@@ -140,7 +140,7 @@ export default function UMLDiagram() {
 
         {/* Arrow down with relationship label */}
         <div className="flex flex-col items-center gap-1">
-          <div className="text-2xl text-gray-400">▼</div>
+          <div className="text-2xl text-gray-400">▲</div>
           <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
             implements
           </div>
@@ -172,7 +172,7 @@ export default function UMLDiagram() {
 
         {/* Arrow down with relationship label */}
         <div className="flex flex-col items-center gap-1">
-          <div className="text-2xl text-gray-400">▼</div>
+          <div className="text-2xl text-gray-400">▲</div>
           <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
             extends
           </div>
