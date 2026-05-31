@@ -321,13 +321,28 @@ export default function LiveDemoPanel() {
                       🔍 Zoom 5x
                     </button>
                   </>
+                ) : cameraType === 'instant' ? (
+                  <>
+                    <button
+                      onClick={handleCharge}
+                      className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-3 rounded transition-all"
+                    >
+                      🔌 Charge
+                    </button>
+                    <button
+                      onClick={handleReload}
+                      className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-3 rounded transition-all"
+                    >
+                      📷 Reload Film Pack
+                    </button>
+                  </>
                 ) : (
                   <>
                     <button
                       onClick={handleReload}
                       className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-3 rounded transition-all col-span-2"
                     >
-                      {cameraType === 'film' ? '📜 Reload Film' : '📷 Reload Film Pack'}
+                      📜 Reload Film
                     </button>
                   </>
                 )}

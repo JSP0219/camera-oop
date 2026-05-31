@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { cameras as initialCameras } from "./data/cameras";
 import CameraCard from "./components/CameraCard";
 import UMLDiagram from "./components/UMLDiagram";
-import ControlPanel from "./components/CotrolPanel";
 import LiveDemoPanel from "./components/LiveDemoPanel";
 
 export default function App() {
@@ -64,7 +63,7 @@ export default function App() {
 
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8 shadow-lg">
           <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
@@ -84,9 +83,6 @@ export default function App() {
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 py-8">
-          {/* Control Panel */}
-          <ControlPanel reset={reset} onClearLog={clearLog} />
-
           {/* UML Diagram */}
           <UMLDiagram />
 
@@ -105,11 +101,25 @@ export default function App() {
             ))}
           </div>
 
-          {/* Log Console */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+          {/* Log Console and Controls */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold text-gray-800 dark:text-white">📋 Activity Log</h2>
-              <span className="text-sm text-gray-600 dark:text-gray-400">{logs.length} events</span>
+              <div className="flex gap-3 items-center">
+                <span className="text-sm text-gray-600 dark:text-gray-400">{logs.length} events</span>
+                <button
+                  onClick={reset}
+                  className="bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 text-white font-medium px-6 py-2 rounded-lg transition-colors shadow"
+                >
+                  🔄 Reset All
+                </button>
+                <button
+                  onClick={clearLog}
+                  className="bg-gray-500 hover:bg-gray-600 dark:bg-gray-600 dark:hover:bg-gray-700 text-white font-medium px-6 py-2 rounded-lg transition-colors shadow"
+                >
+                  🗑️ Clear Log
+                </button>
+              </div>
             </div>
             
             <div ref={logRef} className="bg-gray-900 dark:bg-gray-950 text-green-400 font-mono text-sm rounded-lg p-4 h-64 overflow-y-auto border border-gray-700">
